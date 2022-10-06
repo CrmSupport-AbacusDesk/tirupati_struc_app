@@ -85,9 +85,9 @@
                     <ion-item class="cs-input" [ngClass]="{'error':f.submitted && whatsapp_mobile_no
                     ?.invalid}">
                     <ion-label floating>{{'Whatsapp No' | translate}}.</ion-label>
-                    <ion-input type="number" name="whatsapp_mobile_no
+                    <ion-input type="tel" name="whatsapp_mobile_no
                     " #whatsapp_mobile_no="ngModel" [(ngModel)]="data.whatsapp_mobile_no
-                    " (keypress)="MobileNumber($event)" min="0" maxlength="10" minlength="10"></ion-input>
+                    " min="0" maxlength="10" minlength="10"></ion-input>
                 </ion-item>
                
 
@@ -104,10 +104,18 @@
                     </ion-datetime>
                 </ion-item>
 
-                <ion-item *ngIf="data.user_type=='2'"  class="cs-date mb0" [ngClass]="{'error':f.submitted && doa?.invalid}">
+                <ion-item  class="cs-date mb0" [ngClass]="{'error':f.submitted && doa?.invalid}">
                     <ion-label>{{'Date of Anniversary' | translate}}</ion-label>
                     <ion-datetime displayFormat="DD/MM/YYYY" max={{today_date}} type="text" name="doa" #doa="ngModel" [(ngModel)]="data.doa">
                     </ion-datetime>
+                </ion-item>
+
+                  
+                <ion-item class="cs-select" [ngClass]="{'error':f.submitted && distributor_id?.invalid}" *ngIf="data.user_type=='2'">
+                    <ion-label>{{'Select Distributor' | translate}}</ion-label>
+                    <ion-select name="distributor_id" [(ngModel)]="data.distributor_id" #distributor_id="ngModel" >
+                        <ion-option *ngFor="let row of distributor_list" value="{{row.id}}">{{row.company_name}}  {{row.mobile_no}}</ion-option>
+                    </ion-select>
                 </ion-item>
             </ion-list>
         </div>
@@ -175,7 +183,7 @@
                 
                 
                 <div class="upload-document" (click)="onUploadChange()">
-                    <p *ngIf="data.document_image==''"><i class="material-icons">add_circle</i><br>{{'Upload Document'}}</p>
+                    <p *ngIf="data.document_image==''"><i class="material-icons">add_circle</i><br>{{'Upload Document' | translate}}</p>
                     <!-- <img *ngIf="data.document_image != ''" [src]="data.document_image" alt="" required> -->
 
                     <img src="{{data.doc_edit_id ? uploadurl+data.document_image : data.document_image}}" *ngIf="data.document_image != ''">
@@ -203,7 +211,7 @@
     </div>
     
     <!-- *ngIf="data.user_type=='1'" -->
-    <ng-container >
+    <!-- <ng-container >
         <div class="heading line" >
             <p >{{'Dealer Information'}}</p>
         </div>
@@ -224,14 +232,14 @@
                         <ion-label floating>{{'Mobile No'}}.</ion-label>
                         <ion-input type="tel" name="parent_counter_mobile " #parent_counter_mobile="ngModel" [(ngModel)]="data.parent_counter_mobile" maxlength="10" minlength="10"></ion-input>
                     </ion-item>
-                    <!-- <ion-item class="cs-input">
+                    <ion-item class="cs-input">
                         <ion-label floating>{{'Address'}}</ion-label>
                         <ion-input type="text" name="dealer_address " #dealer_address="ngModel" [(ngModel)]="data.dealer_address"></ion-input>
-                    </ion-item> -->
+                    </ion-item>
                 </ion-list>
             </div>
         </div>
-    </ng-container>
+    </ng-container> -->
     
     
     <div class="heading line" *ngIf="!data.id">

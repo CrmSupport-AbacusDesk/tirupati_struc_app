@@ -73,8 +73,8 @@
                 <button (click)="recvConfirmation(list.id, list.redeem_type)">{{'Receive' | translate}}</button>
             </div>
             <div class="transfer" >
-                <p  *ngIf="list.receive_status=='Transfer'">Transfer</p>
-                <p  *ngIf="list.receive_status=='Shipped'">Shipped</p>
+                <p  *ngIf="list.receive_status=='Transfer'">{{'Transfer' | translate}}</p>
+                <p  *ngIf="list.receive_status=='Shipped'">{{'Shipped' | translate}}</p>
 
             </div>
         </div>

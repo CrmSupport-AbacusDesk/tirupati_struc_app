@@ -1,3 +1,7 @@
+import { PointtransferremarkPageModule } from './../pages/pointtransferremark/pointtransferremark.module';
+import { PlumberlistPageModule } from './../pages/plumberlist/plumberlist.module';
+import { PlumberdetailPageModule } from './../pages/plumberdetail/plumberdetail.module';
+import { PlumberaddPageModule } from './../pages/plumberadd/plumberadd.module';
 import { RedeemTypePageModule } from './../pages/redeem-type/redeem-type.module';
 import { DigitalcatalogPageModule } from './../pages/digitalcatalog/digitalcatalog.module';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -109,12 +113,16 @@ export function createTranslateLoader(http: HttpClient) {
         GiftDetailPageModule,
         GiftListPageModule,
         OffersPageModule,
+        PointtransferremarkPageModule,
         CancelpolicyModalPageModule,
         ViewProfilePageModule,
         CancelationPolicyPageModule,
         PointListPageModule,
         PointDetailPageModule,
         ProfilePageModule,
+        PlumberaddPageModule,
+        PlumberdetailPageModule,
+        PlumberlistPageModule,
         MainHomePageModule,
         ProductsPageModule,
         TermsPageModule,

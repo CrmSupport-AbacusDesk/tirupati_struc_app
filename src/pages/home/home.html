@@ -78,18 +78,31 @@
     </div>
     
     <div class="home-grid" [ngClass]="{'list-view': active}">
-        <div class="count-info" *ngIf="karigar_detail.user_type!=3">
-            <div class="left-count">
-                <p>{{'LAST 7 DAYS' | translate}}</p>
-                <h1>{{last_point}}</h1>
+        <div class="count-info" >
+            <div class="left-count" *ngIf="karigar_detail.user_type ==2">
+                <p>{{'PLUMBER TRANSFER WALLET' | translate}}</p>
+                <h1>{{plumber_point_transfer}}</h1>
                 <p>{{'Points' | translate}}</p>
             </div>
-            <div class="left-count" (click)="update_lang()">
-                <p>{{'TOTAL' | translate}}</p>
+            <!-- (click)="update_lang()" -->
+            <div class="left-count"  *ngIf="karigar_detail.user_type ==2">
+                <p>{{'WALLET BALANCE' | translate}}</p>
                 <h1>{{total_balance_point}}</h1>
                 <p>{{'Points' | translate}}</p>
             </div>
+            
+            <div class="list" *ngIf="karigar_detail.user_type ==1"> 
+                <div class="left-count">
+                  <img src="assets/icons/wallet.png">
+                  
+                    <p>{{ 'WALLET BALANCE' | translate }}</p>
+                    <h4> {{total_balance_point}}</h4> 
+   
+                </div>
+               
+              </div>
         </div>
+        
         <ul>
             <li (click)="viewProfie()">
                 <div class="img-view">
@@ -97,25 +110,26 @@
                 </div>
                 <p>{{'My Profile' | translate}}</p>
             </li>
-            <li (click)="scanCoupon()" *ngIf="karigar_detail.user_type == 1 && karigar_detail.status =='Verified' ">
+            <!-- <li (click)="scanCoupon()" *ngIf="karigar_detail.user_type == 1 ">
                 <div class="img-view">
                     <img src="assets/imgs/home-icon/scane.svg">
                 </div>
                 <p>{{'Scan' | translate}}</p>
-            </li>
+            </li> -->
             
-            <li (click)="goOnPointeListPage()" *ngIf="karigar_detail.user_type == 1 && karigar_detail.status =='Verified'">
-                <div class="img-view">
-                    <img src="assets/imgs/home-icon/payment.svg">
-                </div>
-                <p>{{'Scan History' | translate}}</p>
-            </li>
+          
 
-            <li (click)="goOnContractorPage()" *ngIf="karigar_detail.user_type == 2 && karigar_detail.status =='Verified'">
+            <li (click)="goOnContractorPage()" *ngIf="karigar_detail.user_type == 2">
                 <div class="img-view">
                     <img src="assets/imgs/home-icon/payment.svg">
                 </div>
                 <p>{{'Earn Points' | translate}}</p>
+            </li>
+            <li (click)="goOnPointeListPage()" *ngIf="karigar_detail.user_type !=3">
+                <div class="img-view">
+                    <img src="assets/imgs/home-icon/payment.svg">
+                </div>
+                <p>{{'Point History' | translate}}</p>
             </li>
             <li (click)="gotoChangeLang()">
                 <div class="img-view">
@@ -142,20 +156,26 @@
                 </div>
                 <p>{{'New Arrivals' | translate}}</p>
             </li> -->
-            <li (click)="goOnOffersListPage()" *ngIf="karigar_detail.user_type!=3 && karigar_detail.status =='Verified'">
+            <li (click)="goOnPlumberList()" *ngIf="karigar_detail.user_type == 2">
+                <div class="img-view">
+                    <img src="assets/imgs/home-icon/plumber.svg">
+                </div>
+                <p>{{'Plumber' | translate}}</p>
+            </li>
+            <li (click)="goOnOffersListPage()" *ngIf="karigar_detail.user_type!=3">
                 <div class="img-view">
                     <img src="assets/imgs/home-icon/offer.svg">
                 </div>
                 <p>{{'Offers' | translate}}</p>
             </li>
-            <li (click)="goOnGiftGallary()" *ngIf="karigar_detail.user_type!=3 && karigar_detail.status =='Verified'">
+            <li (click)="goOnGiftGallary()" *ngIf="karigar_detail.user_type!=3">
                 <div class="img-view">
                     <img src="assets/imgs/home-icon/gift.svg">
                 </div>
                 <p>{{'Gift Gallery' | translate}}</p>
             </li>
             <!-- goOnGiftListPage -->
-            <li (click)="goRedeemType()" *ngIf="karigar_detail.user_type!=3 && karigar_detail.status =='Verified'">
+            <li (click)="goRedeemType()" *ngIf="karigar_detail.user_type!=3">
                 <div class="img-view">
                     <img src="assets/imgs/home-icon/wallet.svg">
                 </div>
@@ -173,7 +193,7 @@
             </li> -->
            
             
-            <li (click)="gotoHistory()" *ngIf="karigar_detail.user_type!=3 && karigar_detail.status =='Verified'">
+            <li (click)="gotoHistory()" *ngIf="karigar_detail.user_type!=3">
                 <div class="img-view">
                     <img src="assets/imgs/home-icon/history.svg">
                 </div>

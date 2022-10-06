@@ -24,7 +24,7 @@
 			</div>
 			<div class="input-section">
 				<div class="input-adjust m16 mb0">
-					<input class="pl16 radius-none" type="tel" name="otp" placeholder="{{'Enter OTP' | translate}}" #otp="ngModel" [(ngModel)]="data.otp" (ngModelChange)="otpvalidation()" required>
+					<input class="pl16 radius-none" type="tel" name="otp" placeholder="{{'Enter OTP' | translate}}" #otp="ngModel" [(ngModel)]="data.otp" minlength="4" maxlength="4" (ngModelChange)="otpvalidation()" required>
 					<div class="otp-error" *ngIf="!otp_value && otp?.touched">
 						<p>{{'Wrong OTP value' | translate}}</p>
 					</div>

@@ -6,14 +6,16 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>{{ 'Architect Points Detail' | translate }}</ion-title>
+    <ion-title>{{ 'Retailer Points Detail' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <div class="cs-list">
     <div class="top-block">
-      <p>{{conDetail.dealer_name}}</p>
+      <p> {{'Company Name' | translate}} : {{conDetail.distributor_company_name | titlecase}}</p>
+      <p>{{conDetail.distributor_mobile}}</p>
+
     </div>
     <div class="middle-block">
       <div class="three-block">
@@ -30,13 +32,13 @@
     <h2>{{'Items Detail' | translate}}</h2>
     
     <ion-item  *ngFor="let row of productData; let i = index">
-      <p><strong>{{'Brand Name' | translate}}:</strong> {{row.product_point_group}}</p>
-      <p><strong>{{'Product Detail' | translate}}:</strong> {{row.product_detail}}</p>
+      <p><strong>{{'Product Detail' | translate}}:</strong> {{row.product_point_group | titlecase}}</p>
       <!-- <p><strong>{{'Size' | translate}}:</strong>  {{row.length}} * {{row.width}}</p> -->
       <p><strong>{{'Quantity' | translate}}:</strong>  {{row.qty}}</p>
-      <p><strong>{{'Total Points' | translate}}:</strong>  {{row.total_point}}</p>
+      <p *ngIf="conDetail.status =='Reject'"><strong>{{'Reason' | translate}}:</strong>  {{conDetail.status_reason ? conDetail.status_reason :'N/A'}}</p>
     </ion-item>
   </ng-container>
+  
   
   <ng-container *ngIf="conDetail.image != ''">
     <h2>{{'Bill Image' | translate}}</h2>

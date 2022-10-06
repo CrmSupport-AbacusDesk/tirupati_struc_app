@@ -154,7 +154,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:849648964768:android:72456785a2dd02d402a5c5",
         "android_client_info": {
-          "package_name": "com.tirupatistructural.app"
+          "package_name": "com.gangaveneer.app"
         }
       },
       "oauth_client": [
@@ -268,9 +268,96 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:849648964768:android:4e0756feb62d1b6f02a5c5",
+        "android_client_info": {
+          "package_name": "com.konceptLed.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "849648964768-tufbr68tnlo4a3loob2f463tuqd2g9je.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALAv06C-1WcJjx3SOjhQiKBYlxipEhM9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "849648964768-tufbr68tnlo4a3loob2f463tuqd2g9je.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:849648964768:android:9b47d6041586f0da02a5c5",
+        "android_client_info": {
+          "package_name": "com.lipkagroup.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "849648964768-tufbr68tnlo4a3loob2f463tuqd2g9je.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALAv06C-1WcJjx3SOjhQiKBYlxipEhM9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "849648964768-tufbr68tnlo4a3loob2f463tuqd2g9je.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:849648964768:android:a3d57adb2c36fdd202a5c5",
         "android_client_info": {
           "package_name": "com.lkFaucet.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "849648964768-tufbr68tnlo4a3loob2f463tuqd2g9je.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALAv06C-1WcJjx3SOjhQiKBYlxipEhM9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "849648964768-tufbr68tnlo4a3loob2f463tuqd2g9je.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:849648964768:android:99a7d4c4f586dd8302a5c5",
+        "android_client_info": {
+          "package_name": "com.loghornindustries.app"
         }
       },
       "oauth_client": [
@@ -416,6 +503,35 @@
         "mobilesdk_app_id": "1:849648964768:android:0f62fcdb424f25f602a5c5",
         "android_client_info": {
           "package_name": "com.respite.abacusdesk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "849648964768-tufbr68tnlo4a3loob2f463tuqd2g9je.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALAv06C-1WcJjx3SOjhQiKBYlxipEhM9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "849648964768-tufbr68tnlo4a3loob2f463tuqd2g9je.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:849648964768:android:ee4530570f944aa002a5c5",
+        "android_client_info": {
+          "package_name": "com.tirupatistructural.app"
         }
       },
       "oauth_client": [

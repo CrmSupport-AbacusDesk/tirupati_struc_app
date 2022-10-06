@@ -1,3 +1,4 @@
+import { PlumberlistPage } from './../plumberlist/plumberlist';
 import { RedeemTypePage } from './../redeem-type/redeem-type';
 import { DigitalcatalogPage } from './../digitalcatalog/digitalcatalog';
 import { Component } from '@angular/core';
@@ -46,6 +47,7 @@ export class HomePage {
     loading:Loading;
     karigar_detail:any={};
     last_point:any='';
+    plumber_point_transfer:any='';
     feedback_count:any =''
     today_point:any='';
     appbanner:any={};
@@ -113,6 +115,9 @@ export class HomePage {
             this.offer_detail=r['offer'];
             this.feedback_count=r['feedback_count'];
             this.last_point=r['last_point'];
+            this.plumber_point_transfer=r['karigar'].plumber_purchase_point;
+            console.log(this.plumber_point_transfer);
+            
 
             this.notify_cn=r['notifications'];
             this.today_point=r['today_point'];
@@ -284,9 +289,165 @@ export class HomePage {
     goOnScanePage(){
         this.navCtrl.push(ScanPage);
     }
+    goOnPlumberList(){
+      
+        
+        
+        if( this.karigar_detail.status =='Suspect'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close',
+                subTitle:"Your current profile status is  <strong class=Suspect>“Suspect”</strong>. You can only plumber add when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        
+        else if(this.karigar_detail.status =='Pending'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close status-alert',
+                subTitle:"Your current profile status is  <strong class=Pending>“Pending”</strong>. You can only plumber add when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        else if(this.karigar_detail.status =='Reject'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close status-alert',
+                subTitle:"Your current profile status is  <strong class=Reject>“Reject”</strong>. You can only plumber add when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        else{
+
+            this.navCtrl.push(PlumberlistPage);
+        }
+
+    }
     
     goOnOffersListPage(){
-        this.navCtrl.push(OfferListPage);
+      
+        
+
+         if( this.karigar_detail.status =='Suspect'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close',
+                subTitle:"Your current profile status is  <strong class=Suspect>“Suspect”</strong>. You can only see your offers when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        
+        else if(this.karigar_detail.status =='Pending'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close status-alert',
+                subTitle:"Your current profile status is  <strong class=Pending>“Pending”</strong>. You can only see your offers when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        else if(this.karigar_detail.status =='Reject'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close status-alert',
+                subTitle:"Your current profile status is  <strong class=Reject>“Reject”</strong>. You can only see your offers when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        else{
+
+            this.navCtrl.push(OfferListPage);
+        }
         
     }
     goOnOffersPage(id)
@@ -295,7 +456,83 @@ export class HomePage {
     }
     
     goOnPointeListPage(){
-        this.navCtrl.push(PointListPage);
+      
+
+
+        if( this.karigar_detail.status =='Suspect'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close',
+                subTitle:"Your current profile status is  <strong class=Suspect>“Suspect”</strong>. You can only see your points history when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        
+        else if(this.karigar_detail.status =='Pending'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close status-alert',
+                subTitle:"Your current profile status is  <strong class=Pending>“Pending”</strong>. You can only see your points history when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        else if(this.karigar_detail.status =='Reject'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close status-alert',
+                subTitle:"Your current profile status is  <strong class=Reject>“Reject”</strong>. You can only see your points history when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        else{
+
+            this.navCtrl.push(PointListPage);
+        }
         
     }
     goOnWorkingSitePage()
@@ -347,7 +584,81 @@ export class HomePage {
         this.navCtrl.push(OfferProductPage);
     }
     goOnContractorPage(){
-        this.navCtrl.push(ContractorListPage);
+      
+         if( this.karigar_detail.status =='Suspect'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close',
+                subTitle:"Your current profile status is  <strong class=Suspect>“Suspect”</strong>. You can only earn your points when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        
+        else if(this.karigar_detail.status =='Pending'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close status-alert',
+                subTitle:"Your current profile status is  <strong class=Pending>“Pending”</strong>. You can only earn your points when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        else if(this.karigar_detail.status =='Reject'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close status-alert',
+                subTitle:"Your current profile status is  <strong class=Reject>“Reject”</strong>. You can only earn your points when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        else{
+
+            this.navCtrl.push(ContractorListPage);
+        }
     }
     viewDetail()
     {
@@ -355,11 +666,159 @@ export class HomePage {
     }
     gotoHistory()
     {
-        this.navCtrl.push(TransactionPage)
+        
+        if( this.karigar_detail.status =='Suspect'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close',
+                subTitle:"Your current profile status is  <strong class=Suspect>“Suspect”</strong>. You can only see your points redeem history when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        
+        else if(this.karigar_detail.status =='Pending'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close status-alert',
+                subTitle:"Your current profile status is  <strong class=Pending>“Pending”</strong>. You can only see your points redeem history when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        else if(this.karigar_detail.status =='Reject'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close status-alert',
+                subTitle:"Your current profile status is  <strong class=Reject>“Reject”</strong>. You can only see your points redeem history when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        else{
+
+            this.navCtrl.push(TransactionPage)
+        }
     }
     goOnGiftGallary()
     {
-        this.navCtrl.push(GiftListPage)
+      
+        if( this.karigar_detail.status =='Suspect'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close',
+                subTitle:"Your current profile status is  <strong class=Suspect>“Suspect”</strong>. You can only see your gift gallery when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        
+        else if(this.karigar_detail.status =='Pending'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close status-alert',
+                subTitle:"Your current profile status is  <strong class=Pending>“Pending”</strong>. You can only see your gift gallery when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        else if(this.karigar_detail.status =='Reject'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close status-alert',
+                subTitle:"Your current profile status is  <strong class=Reject>“Reject”</strong>. You can only see your gift gallery when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        else{
+
+            this.navCtrl.push(GiftListPage)
+        }
     }
     goOnNewsPage()
     {
@@ -391,7 +850,78 @@ export class HomePage {
     }
 
     goRedeemType(){
-        if(this.karigar_detail.user_type ==1 && this.karigar_detail.status =='Verified'){
+
+        if( this.karigar_detail.status =='Suspect'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close',
+                subTitle:"Your current profile status is  <strong class=Suspect>“Suspect”</strong>. You can only redeem your points when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        
+        else if(this.karigar_detail.status =='Pending'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close status-alert',
+                subTitle:"Your current profile status is  <strong class=Pending>“Pending”</strong>. You can only redeem your points when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        else if(this.karigar_detail.status =='Reject'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close status-alert',
+                subTitle:"Your current profile status is  <strong class=Reject>“Reject”</strong>. You can only redeem your points when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        else if(this.karigar_detail.user_type ==1 && this.karigar_detail.status =='Verified'){
             this.navCtrl.push(RedeemTypePage,{'mode':'home',"balance_point":this.total_balance_point, "redeem_point":this.karigar_detail.redeem_balance});
 
         }
