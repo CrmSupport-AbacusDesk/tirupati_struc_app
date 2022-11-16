@@ -35,6 +35,7 @@ export class ContractorAddPage {
   }
   
   ionViewDidLoad() {
+    this.distributorList();
     this.getCategory();
     this.getProduct();
   }
@@ -100,12 +101,12 @@ export class ContractorAddPage {
   }
   
   
-  
+   // let getData
+    // getData = this.product_code.filter( x => x.id==event.value)[0];
   
   getpoint(point){
     console.log(point);
-    // let getData
-    // getData = this.product_code.filter( x => x.id==event.value)[0];
+   
     this.pointValue  = point;
     
     console.log(this.pointValue);
@@ -120,16 +121,14 @@ export class ContractorAddPage {
   {
     let val=JSON.parse(JSON.stringify(this.conData1));
     console.log(val);
-    if(this.conData1.product_point_group!='' && this.conData1.product_detail!='' && this.conData1.qty!='' && this.conData1.totalPoint!=''){
+    if(this.conData1.product_point_group!='' && this.conData1.qty!='' ){
       this.contractorData.push(val);
     }
     console.log(this.contractorData);
-    this.conData1.totalPoint='';
+  
     this.conData1.product_point_group='';
-    this.conData1.product_detail='';
+  
     this.conData1.qty='';
-    this.conData1.totalPoint ='';
-    this.pointValue ='';
     
   }
   
@@ -211,8 +210,8 @@ takeDocPhoto()
   console.log(options);
   this.camera.getPicture(options).then((imageData) => {
     this.flag=false;
-    this.conData.image = 'data:image/jpeg;base64,' + imageData;
-    console.log(this.conData.image, 'line number 236');
+    this.conData1.image = 'data:image/jpeg;base64,' + imageData;
+    console.log(this.conData1.image, 'line number 236');
   }, (err) => {
   });
 }
@@ -227,8 +226,8 @@ getDocImage()
   console.log(options);
   this.camera.getPicture(options).then((imageData) => {
     this.flag=false;
-    this.conData.image = 'data:image/jpeg;base64,' + imageData;
-    console.log(this.conData.image, 'line number 252');
+    this.conData1.image = 'data:image/jpeg;base64,' + imageData;
+    console.log(this.conData1.image, 'line number 252');
   }, (err) => {
   });
 }
@@ -244,27 +243,24 @@ alertToast(msg){
 
 submit(){
  
-  
-  
-  if(this.conData.type == 'manual'){
-    if(this.contractorData < 1){
+   
+  if(this.contractorData < 1){
       this.alertToast('Please add one item at least!')
       return
-    }
-  }
-  if(this.conData.type == 'image'){
-    if(this.conData.image=='' || this.conData.image == undefined){
+     }
+
+       if(this.conData1.image=='' || this.conData1.image == undefined){
       this.alertToast('Bill image required')
       return
     }
-  }
+  
   
   this.presentLoading();
   this.saveFlag = true;
-  this.conData.part = this.contractorData;
-  this.conData.contractor_id = this.dbService.karigar_id;
+  this.conData1.part = this.contractorData;
+  this.conData1.contractor_id = this.dbService.karigar_id;
 
-  this.dbService.post_rqst( this.conData,'app_karigar/add_contractor_request ').subscribe( r =>
+  this.dbService.post_rqst( this.conData1,'app_karigar/add_contractor_request ').subscribe( r =>
     {
       console.log(r);
 
@@ -274,8 +270,19 @@ submit(){
       }
     });
   }
+  filter:any;
+  distributor_list:any=[];
+  distributorList(){
+    
+   
   
+    this.dbService.post_rqst( {'filter':this.filter},'app_karigar/distributorList').subscribe( r =>
+      {
+        console.log(r);
+        this.distributor_list=r['karigars'];
   
+      });
+    }
   
   MobileNumber(event: any) {
     const pattern = /[0-9]/;

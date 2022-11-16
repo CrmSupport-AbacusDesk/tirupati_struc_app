@@ -21,7 +21,7 @@ $app-direction: ltr;
 // to match your app's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
-$colors: ( primary: #fee10d, secondary: #565757, success:#4a9902, danger: #f53d3d, light: #f4f4f4, dark: #222, white: #ffffff, black:#000000 );
+$colors: ( primary: #ec3237, secondary: #1d1b20, success:#4a9902, danger: #f53d3d, light: #f4f4f4, dark: #222, white: #ffffff, black:#000000 );
 * {
     margin: 0;
     padding: 0;
@@ -29,8 +29,8 @@ $colors: ( primary: #fee10d, secondary: #565757, success:#4a9902, danger: #f53d3
 }
 
 
-$primary:#fee10d;
-$secondary: #565757;
+$primary:#ec3237;
+$secondary: #1d1b20;
 $danger: #f53d3d;
 $black:#000000;
 $white: #ffffff;
@@ -42,10 +42,12 @@ $linecolor: #625dd4;
 
 
 
-
+.Suspect{color:#31d1eb !important}
 .Pending{color:#ff9800 !important}
 .Reject{color: $danger}
 .Approved{color:#39ab0d !important}
+.Verified{color:#39ab0d !important}
+
 
 // App iOS Variables
 // --------------------------------------------------
@@ -483,7 +485,7 @@ ion-slides {
         border: 1px solid #b0b0b0;
         border-radius: 6px;
         overflow: hidden;
-        
+        margin: 15px 0px;
         ion-segment-button{
             height: 35px !important;
             line-height: 35px !important;
@@ -767,6 +769,11 @@ ion-header {
         content: "";
     }
 }
+
+ion-searchbar.searchbar-md .searchbar-input-container input {
+   
+    margin-bottom: 5px !important;
+}
 .back-btns{
     position: absolute;
     top: 50%;
@@ -855,6 +862,8 @@ button {
 
 .radius-none {
     border-radius: 0px !important;
+    margin-left: auto;
+    margin: 7px;
 }
 
 .btn-radius-four {
@@ -963,7 +972,7 @@ button {
         button {
             background: transparent;
             font-size: 14px;
-            color: #fff;
+            color: $white;
             letter-spacing: 1px;
             font-weight: 500;
             width: 100%;
@@ -1005,12 +1014,13 @@ button {
             }
         }
         input {
-            padding-left: 56px;
+            padding-left: 50px;
             padding-right: 16px;
             border-radius: 45px;
             width: 100%;
             border: 1px solid #D4D4D4;
             height: 45px;
+            
         }
         .otp-error {
             p {
@@ -2613,6 +2623,8 @@ button {
                     border-radius: 3px;
                     padding: 10px 10px !important;
                     padding-left: 26px !important;
+                    margin-left: 165px !important;
+                    margin-top: -35px !important;
                 }
                 &:after {
                     content: "";
@@ -3476,6 +3488,7 @@ ion-tabs {
 }
 
 .point-block {
+    margin-top: 10px;
     display: grid;
     grid-template-columns: 1fr 80px;
     border-radius: 10px;
@@ -4716,6 +4729,9 @@ ion-popover {
             font-weight: 600;
         }
     }
+
+
+  
 }
 
 button {
@@ -4868,7 +4884,7 @@ button {
                         top: 0px;
                         z-index: 9;
                         border-bottom: 0px;
-                        background: $secondary;
+                        background: $white;
                         // padding-bottom: 0px;
 
 

@@ -14,17 +14,26 @@ import * as jwt_decode from "jwt-decode";
 })
 export class PointListPage {
   coupon_list:any=[];
+  company_point_transfer:any=[];
+
+
   karigar_point:any={};
   loading:Loading;
   filter:any={};
   ref_kar:any;
+  
+
+
   welcomePoint:any;
   welcomePoint_date:any;
   history :string  ="scanned"
+  
 
   last_scanned_date:any='';
   tokenInfo:any={};
   lang:any='';
+  point_transfer: any;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,public service:DbserviceProvider,public loadingCtrl:LoadingController,private app:App,public storage:Storage,public translate:TranslateService,public db:DbserviceProvider) {
     console.log(this.db);
     console.log(this.db.karigar_info.status);
@@ -88,13 +97,25 @@ export class PointListPage {
         this.loading.dismiss();
         this.coupon_list=r['coupon'];
         this.welcomePoint=r['welcome_points'];
+        this.company_point_transfer=r['company_point_transfer'];
+
+
+
 
         this.karigar_point=r['karigar'];
+        this.point_transfer=r['point_transfer'];
+         
+        
+
         this.ref_kar = r['ref_kar']
         this.welcomePoint = r['welcome_points'].welcome_points
         this.welcomePoint_date =  r['welcome_points'].date_updated
         this.total_balance_point = parseInt( this.karigar_point.balance_point) + parseInt(this.karigar_point.referal_point_balance );
         console.log(this.total_balance_point);
+        
+   
+
+
         
       });
     }

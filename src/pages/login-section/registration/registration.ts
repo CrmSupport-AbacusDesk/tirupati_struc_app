@@ -21,6 +21,7 @@ export class RegistrationPage {
     @ViewChild(Content) content: Content;
     data:any={};
     state_list:any=[];
+    distributor_list:any=[];
     district_list:any=[];
     city_list:any=[];
     pincode_list:any=[];
@@ -40,9 +41,10 @@ export class RegistrationPage {
     
     constructor(public navCtrl: NavController, public constant:ConstantProvider, public toastCtrl: ToastController,public navParams: NavParams, public service:DbserviceProvider,public alertCtrl:AlertController ,public actionSheetController: ActionSheetController,private camera: Camera,private loadingCtrl:LoadingController,public modalCtrl: ModalController,private storage:Storage,public translate:TranslateService) {
         this.getstatelist();
+        this.getdistributorlist();
         this.uploadurl = this.constant.upload_url;
         this.data.mobile_no = this.navParams.get('mobile_no');
-        // this.lang = this.navParams.get('lang');
+        this.lang = this.navParams.get('lang');
         console.log(this.data.mobile_no);
         this.data.profile='';
         this.data.document_image='';
@@ -113,6 +115,22 @@ export class RegistrationPage {
         });
     }
     
+    getdistributorlist(){
+        
+        this.service.post_rqst( {}, 'app_karigar/distributorList').subscribe( r =>
+          {
+            this.distributor_list = r.karigars;
+            console.log(this.distributor_list);
+            
+         
+          
+          });
+            // this.loading.dismiss();
+    
+          
+        }
+
+   
     getstatelist(){
         this.service.get_rqst('app_master/getStates').subscribe( r =>
             {

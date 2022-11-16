@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>{{ 'Architect points' | translate }} </ion-title>
+    <ion-title>{{ 'Retailer Points List' | translate }} </ion-title>
   </ion-navbar>
   
   <ion-toolbar color="white" >
@@ -43,20 +43,23 @@
     
     <div class="cs-list" *ngFor="let row of data; let i = index;" (click)="goOnContractorDetail(row.id)">
       <div class="top-block">
-        <p>{{row.dealer_name}}</p>
+        <p>{{row.company_name | titlecase}}</p>
         <ion-icon name="arrow-forward" color="primary"  ios="ios-arrow-forward"></ion-icon>
       </div>
       <div class="middle-block">
         <div class="three-block">
           <p>{{'Date' | translate}} : <strong>{{row.date_created |  date:'d MMMM y'}}</strong></p>
           <p>{{'Status' | translate}} : <strong class="{{row.status}}">{{row.status}}</strong> </p>
+
         </div>
         <div class="three-block" *ngIf="row.total_items || row.total_qty">
-          <p>{{'Total Item' | translate}} : <strong>{{row.total_items}}</strong></p>
           <p>{{'Quantity' | translate}} : <strong>{{row.total_qty}}</strong></p>
+          <!-- <p>{{'Total Item' | translate}} : <strong>{{row.total_items}}</strong></p> -->
+          <p *ngIf="row.status =='Reject'"><strong>{{'Reason' | translate}}:</strong>  {{row.status_reason ? row.status_reason :'N/A'}}</p>
+
         </div>
       </div>
-      <div class="top-block footer-block">
+      <div class="top-block footer-block" *ngIf="row.status =='Approved'">
         <p>{{'Points Earned' | translate}}: <strong style="font-size: 14px; color: #2e5ea2;">{{row.points}}</strong></p>
       </div>
     </div>

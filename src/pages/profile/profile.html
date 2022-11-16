@@ -63,7 +63,7 @@
                             <h6>{{karigar_detail.address |titlecase}} {{karigar_detail.state |titlecase}} {{karigar_detail.district |titlecase}} {{karigar_detail.city |titlecase}} {{karigar_detail.pincode }}</h6>
                         </div>
                     </div>
-                    <div class="profile-card" >
+                    <!-- <div class="profile-card" >
                         <div class="text-center">
                             <h2>{{ 'Dealer Information' | translate }}</h2>
                         </div>
@@ -78,6 +78,21 @@
                         <div class="text-box">
                             <p>{{'Mobile No.' | translate}}</p>
                             <h6>{{karigar_detail.parent_counter_mobile ? karigar_detail.parent_counter_mobile:'N/A'}}</h6>
+                        </div>
+                   
+                    </div> -->
+                     <div class="profile-card" >
+                        <div class="text-center">
+                            <h2>{{ 'Distributor Information' | translate }}</h2>
+                        </div>
+                        <div class="text-box">
+                            <p>{{'Company Name' | translate}}</p>
+                            <h6>{{karigar_detail.distributor_company_name ? karigar_detail.distributor_company_name:'N/A'}}</h6>
+                        </div>
+                        
+                        <div class="text-box">
+                            <p>{{'Mobile No.' | translate}}</p>
+                            <h6>{{karigar_detail.distributor_mobile_no ? karigar_detail.distributor_mobile_no:'N/A'}}</h6>
                         </div>
                    
                     </div>
