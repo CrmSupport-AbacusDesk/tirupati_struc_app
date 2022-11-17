@@ -25,6 +25,9 @@ export class MobileLoginPage {
     otp:any='';
     lang:any='en';
     loading:Loading;
+    user_type: any = '';
+    dialog: any;
+    toastCtrl: any;
     
     constructor(public navCtrl: NavController, public navParams: NavParams,public service:DbserviceProvider,public alertCtrl:AlertController,public db:DbserviceProvider,public translate:TranslateService,private loadingCtrl:LoadingController) {
         this.lang = this.navParams.get("lang");
@@ -56,6 +59,14 @@ export class MobileLoginPage {
         }, 1000);
     }
     
+    alertToast(msg){
+        const toast = this.toastCtrl.create({
+          message: msg,
+          duration: 3000
+        });
+        toast.present();
+      }
+    
     submit()
     {
         this.maxTime = 30;
@@ -65,6 +76,23 @@ export class MobileLoginPage {
         .subscribe((r)=>
         {
             console.log(r);
+
+            if(r['status'] == "SUCCESS")
+            {
+
+                this.user_type = r['user_type'];
+                console.log(this.user_type);
+                if (this.user_type == '3') {
+                    this.RequiredAlert("It's number registered to Distributor");
+                    this.navCtrl.push(LanguagePage)
+                    return;
+    
+                }
+
+                
+
+            }
+          
             if(r['status'] == "SUCCESS")
             {
                 this.otp=r['otp'];
@@ -76,9 +104,20 @@ export class MobileLoginPage {
                 this.RequiredAlert("Please enter Mobile No to continue.");
                 return false;
             }
+
+
+            // if (this.user_type == 3) {
+            //     this.dialog.error("It's registered of Distributor")
+            //     this.navCtrl.push(LanguagePage)
+            //     console.log(this.user_type);
+            //     return;
+
+            // }
+
+
         });
     }
-    
+  
     showAlert(text) {
         let alert = this.alertCtrl.create({
             title:'Alert!',
