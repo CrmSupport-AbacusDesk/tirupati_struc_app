@@ -36,12 +36,13 @@ export class RegistrationPage {
     today_date:any;
     whatsapp_mobile_no:any='';
     uploadurl: any = "";
+    filter: any='';
+    state: any;
     // defaultSelectedRadio = "data.user_type=1";
     
     
     constructor(public navCtrl: NavController, public constant:ConstantProvider, public toastCtrl: ToastController,public navParams: NavParams, public service:DbserviceProvider,public alertCtrl:AlertController ,public actionSheetController: ActionSheetController,private camera: Camera,private loadingCtrl:LoadingController,public modalCtrl: ModalController,private storage:Storage,public translate:TranslateService) {
         this.getstatelist();
-        this.getdistributorlist();
         this.uploadurl = this.constant.upload_url;
         this.data.mobile_no = this.navParams.get('mobile_no');
         this.lang = this.navParams.get('lang');
@@ -83,6 +84,7 @@ export class RegistrationPage {
         this.translate.use(this.lang);
         if (this.data.state) {
             this.getDistrictList(this.data.state);
+            this.getdistributorlist(this.data.state)
         }
         this.translate.get("Camera")
         .subscribe(resp=>{
@@ -115,9 +117,13 @@ export class RegistrationPage {
         });
     }
     
-    getdistributorlist(){
+    getdistributorlist(state){
+        console.log(state);
         
-        this.service.post_rqst( {}, 'app_karigar/distributorList').subscribe( r =>
+        this.state =state;
+        if(this.data.user_type == '2'){
+
+        this.service.post_rqst( {'state':this.state}, 'app_karigar/distributorList').subscribe( r =>
           {
             this.distributor_list = r.karigars;
             console.log(this.distributor_list);
@@ -126,6 +132,7 @@ export class RegistrationPage {
           
           });
             // this.loading.dismiss();
+        }
     
           
         }
@@ -150,6 +157,7 @@ export class RegistrationPage {
                 this.district_list=r['districts'];
                 console.log(this.state_list);
             });
+            this.getdistributorlist(state_name);
         }
         
         getCityList(district_name)
@@ -177,7 +185,9 @@ export class RegistrationPage {
                     if(address!= null)
                     {
                         this.data.state = result.address.state_name;
-                        this.getDistrictList(this.data.state)
+                        this.getDistrictList(this.data.state);
+                        this.getdistributorlist(this.data.state);
+
                         this.data.district = result.address.district_name;
                         this.data.city = result.address.city;
                         console.log(this.data);

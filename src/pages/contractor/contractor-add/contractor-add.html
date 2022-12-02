@@ -77,13 +77,38 @@
             </div>
          
           </div>
-          <div class="sprate-block" >
+          <!-- <div class="sprate-block" >
             <div class="upload-document" (click)="onUploadChange()" >
               <p *ngIf="conData1.image=='' || conData1.image== undefined"><i class="material-icons">add_circle</i><br>{{ 'Upload Bill' | translate}}</p>
               <img *ngIf="conData1.image != ''"[src]="conData1.image" alt="">
             </div>
             
-          </div>
+          </div> -->
+
+              <ion-item>
+                    <div class="add-new padding0" >
+                        <div class="uplode-image">
+                            <ul>
+                                <li *ngFor="let pic of image_data;let i = index;">
+                                    <img src="{{pic.image}}">
+                                    <button><i class="material-icons" (click)="remove_image(i)">clear</i></button>
+                                </li>
+                                
+                                <li (click)="captureImage()">
+                                    <label>
+                                        <input type="file" style="display: none;">
+                                        <div class="other">
+                                            <a ><i class="material-icons" >camera_alt</i></a>
+                                        </div>
+                                    </label>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+                    
+                    
+                </ion-item>
           
          
           <div class="pt32 pb16">

@@ -40,11 +40,11 @@
   </ng-container>
   
   
-  <ng-container *ngIf="conDetail.image != ''">
+  <ng-container >
     <h2>{{'Bill Image' | translate}}</h2>
-    <div class="pr16 pl16">
+    <div class="pr16 pl16" *ngFor="let row of productDataImg; let i = index">
       <div class="bill_img">
-        <img src="{{upload_url + conDetail.image}}">
+        <img src="{{upload_url + row.image}}">
       </div>
     </div>
   </ng-container>

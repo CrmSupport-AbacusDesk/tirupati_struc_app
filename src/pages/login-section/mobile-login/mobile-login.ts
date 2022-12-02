@@ -58,15 +58,7 @@ export class MobileLoginPage {
             }
         }, 1000);
     }
-    
-    alertToast(msg){
-        const toast = this.toastCtrl.create({
-          message: msg,
-          duration: 3000
-        });
-        toast.present();
-      }
-    
+        
     submit()
     {
         this.maxTime = 30;

@@ -20,6 +20,8 @@ export class ContractorDetailPage {
   id:any
   conDetail:any = {};
   productData:any =[]
+  productDataImg:any =[]
+
   loading:Loading;
   upload_url:any =''
   constructor(public navCtrl: NavController,  public cons: ConstantProvider, public navParams: NavParams, public dbService:DbserviceProvider, public loadingCtrl:LoadingController, public translate:TranslateService) {
@@ -53,6 +55,10 @@ export class ContractorDetailPage {
         this.loading.dismiss();
         this.conDetail = r.request_detail[0];
         this.productData = this.conDetail.parts;
+        this.productDataImg = this.conDetail.image;
+        console.log(this.productDataImg);
+        
+
 
       });
     }

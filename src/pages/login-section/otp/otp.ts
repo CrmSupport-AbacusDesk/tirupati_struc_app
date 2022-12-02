@@ -28,7 +28,6 @@ export class OtpPage {
     tokan_value: any = '';
     tokenInfo: any = '';
     loading: Loading;
-    // user_type: number;
     user_type: any = '';
     dialog: any;
 
